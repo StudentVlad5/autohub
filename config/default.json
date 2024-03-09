@@ -1,5 +1,5 @@
 {
-  "port": 5000,
+  "port": "https://autohub-one.vercel.app/",
   "jwtSecret": "reznikkvova",
   "mongoUri": "mongodb+srv://Vlad:NEYnvGmbWjK7mmu8@cluster0.jbhh2ds.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
