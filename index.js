@@ -34,22 +34,42 @@ if (prod) {
 }
 
 
-async function start() {
+// async function start() {
+//   try {
+//     await mongoose.connect(mongoUri, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//       useCreateIndex: true,
+//     });
+//     app.listen(5000, () => console.log(`App has been started on port ${PORT} `));
+//   } catch (e) {
+//     console.log('Server error', e.message);
+//     process.exit(1);
+//   }
+// }
+// start();
+
+const connectDB = async () => {
   try {
-    await mongoose.connect(mongoUri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    });
-    app.listen(5000, () => console.log(`App has been started on port ${PORT} `));
-  } catch (e) {
-    console.log('Server error', e.message);
+    const conn = await mongoose.connect(mongoUri);
+    console.log(`MongoDB Connected: ${PORT}`);
+  } catch (error) {
+    console.log(error);
     process.exit(1);
   }
-}
-start();
+};
 
-
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log("Database connection successful");
+      console.log(`Server running. Use our API on port: ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.log(error.message);
+    process.exit(1);
+  });
 
 
 
