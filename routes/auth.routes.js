@@ -4,8 +4,9 @@ const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator');
 const User = require('../models/User');
 const router = Router();
-const config = require('config');
+// const config = require('config');
 
+const jwtSecret = process.env.jwtSecret.toString()
 
 // /api/auth/register
 router.post(
@@ -68,7 +69,7 @@ router.post(
       if (!isMatch) {
         return res.status(400).json({ message: 'Incorrect password, try again !' });
       }
-      const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'), { expiresIn: '1h' });
+      const token = jwt.sign({ userId: user.id }, jwtSecret, { expiresIn: '1h' });
 
       res.json({ token, userId: user.id, isAdmin: user.isAdmin === 'true' });
     } catch (e) {

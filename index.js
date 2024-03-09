@@ -1,9 +1,11 @@
 const express = require('express');
-const config = require('config');
+// const config = require('config');
 const mongoose = require('mongoose');
-const PORT = config.get('port') || 5000;
+// const PORT = config.get('port') || 5000;
 const app = express();
 const path = require('path');
+require("dotenv").config();
+
 
 const cors = require('cors');
 app.use(cors());
@@ -16,7 +18,11 @@ app.use('/api/tire-crud', require('./routes/tire-crud.router'))
 app.use('/api/brand-crud', require('./routes/brand-crud.router'))
 app.use('/api/user-crud', require('./routes/user-crud.router'))
 
+const PORT = process.env.port.toString();
+const mongoUri = process.env.mongoUri.toString()
 
+console.log("PORT", PORT);
+console.log("mongoUri", mongoUri);
 
 const prod = true;
 
@@ -30,7 +36,7 @@ if (prod) {
 
 async function start() {
   try {
-    await mongoose.connect(config.get('mongoUri'), {
+    await mongoose.connect(mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
