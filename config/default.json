@@ -1,6 +1,0 @@
-{
-  "port": "5000",
-  "jwtSecret": "reznikkvova",
-  "mongoUri": "mongodb+srv://Vlad:NEYnvGmbWjK7mmu8@cluster0.jbhh2ds.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-  "NODE_CONFIG_STRICT_MODE": "true"
-}
