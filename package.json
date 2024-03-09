@@ -5,7 +5,7 @@
   "main": "index.js",
   "proxy": "http://127.0.0.1:5000/",
   "scripts": {
-    "start": "node index.js",
+    "start": "SET NODE_ENV = 'dev' && node index.js",
     "server": "nodemon index.js --ignore client",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client \""
