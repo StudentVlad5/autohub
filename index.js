@@ -21,9 +21,6 @@ app.use('/api/user-crud', require('./routes/user-crud.router'))
 const PORT = process.env.port.toString();
 const mongoUri = process.env.mongoUri.toString()
 
-console.log("PORT", PORT);
-console.log("mongoUri", mongoUri);
-
 const prod = true;
 
 if (prod) {
@@ -32,22 +29,6 @@ if (prod) {
     res.sendFile(path.join(__dirname, './client/build/index.html'));
   });
 }
-
-
-// async function start() {
-//   try {
-//     await mongoose.connect(mongoUri, {
-//       useNewUrlParser: true,
-//       useUnifiedTopology: true,
-//       useCreateIndex: true,
-//     });
-//     app.listen(5000, () => console.log(`App has been started on port ${PORT} `));
-//   } catch (e) {
-//     console.log('Server error', e.message);
-//     process.exit(1);
-//   }
-// }
-// start();
 
 const connectDB = async () => {
   try {
