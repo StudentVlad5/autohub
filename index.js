@@ -51,7 +51,11 @@ if (prod) {
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(mongoUri);
+    const conn = await mongoose.connect(mongoUri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useCreateIndex: true,
+          });
     console.log(`MongoDB Connected: ${PORT}`);
   } catch (error) {
     console.log(error);
